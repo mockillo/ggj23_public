@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Fonts/raven-scream.regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/menu/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/menu/main_menu_viewport_content.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/title_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://audio/chord_progression_B_minor.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Fonts/Raven Song.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 35
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 100
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 100
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 190.0
+margin_bottom = 106.0
+rect_scale = Vector2( 10, 10 )
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 192, 108 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ViewportContent" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 700.0
+margin_top = 566.0
+margin_right = 1254.0
+margin_bottom = 968.0
+theme = SubResource( 6 )
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+margin_right = 554.0
+margin_bottom = 199.0
+focus_neighbour_top = NodePath("../QuitButton")
+custom_fonts/font = SubResource( 7 )
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 203.0
+margin_right = 554.0
+margin_bottom = 402.0
+focus_neighbour_bottom = NodePath("../StartButton")
+custom_fonts/font = SubResource( 8 )
+text = "Quit"
+
+[node name="TitleLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 214.0
+margin_top = -131.0
+margin_right = 1698.0
+margin_bottom = 486.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "
+Roots of Allevul"
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="ChopTimer0" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.625
+
+[node name="ChopTimer1" type="Timer" parent="."]
+process_mode = 0
+wait_time = 1.25
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="finished" from="MenuMusic" to="." method="_on_MenuMusic_finished"]
+[connection signal="timeout" from="ChopTimer0" to="." method="_on_ChopTimer0_timeout"]
+[connection signal="timeout" from="ChopTimer1" to="." method="_on_ChopTimer1_timeout"]

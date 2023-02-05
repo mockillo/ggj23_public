@@ -1,0 +1,164 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scenes/game/metronome.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/main.gd" type="Script" id=2]
+[ext_resource path="res://scenes/character/character.gdshader" type="Shader" id=3]
+[ext_resource path="res://scenes/game/game_sounds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/game/background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/utils/Vignette.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/utils/StepHitMissIndicator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/character/character.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/game/GameLogic.gd" type="Script" id=9]
+[ext_resource path="res://scenes/game/sequence_runner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/game/sequence_generator.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/utils/countdown.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Fonts/Raven Song.ttf" type="DynamicFontData" id=13]
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 3 )
+shader_param/shirt_mask = Color( 0.34, 0.5, 0.62, 1 )
+shader_param/shirt_color = Color( 0.309804, 0.32549, 0.337255, 1 )
+shader_param/hair_axe_mask = Color( 0.99, 0.93, 0.82, 1 )
+shader_param/hair_axe_color = Color( 0.819608, 0.835294, 0.988235, 1 )
+shader_param/pants_mask = Color( 0.760784, 0.65098, 0.611765, 1 )
+shader_param/pants_color = Color( 0.392157, 0.337255, 0.317647, 1 )
+shader_param/boots_eyes_mask = Color( 0.63, 0.87, 0.83, 1 )
+shader_param/boots_eyes_color = Color( 0.298039, 0.576471, 0.2, 1 )
+shader_param/skin_mask = Color( 0.97, 0.81, 0.57, 1 )
+shader_param/skin_color = Color( 0.97, 0.81, 0.57, 1 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 3 )
+shader_param/shirt_mask = Color( 0.34, 0.5, 0.62, 1 )
+shader_param/shirt_color = Color( 0.34, 0.5, 0.62, 1 )
+shader_param/hair_axe_mask = Color( 0.99, 0.93, 0.82, 1 )
+shader_param/hair_axe_color = Color( 0.99, 0.93, 0.82, 1 )
+shader_param/pants_mask = Color( 0.76, 0.65, 0.61, 1 )
+shader_param/pants_color = Color( 0.76, 0.65, 0.61, 1 )
+shader_param/boots_eyes_mask = Color( 0.63, 0.87, 0.83, 1 )
+shader_param/boots_eyes_color = Color( 0.63, 0.87, 0.83, 1 )
+shader_param/skin_mask = Color( 0.97, 0.81, 0.57, 1 )
+shader_param/skin_color = Color( 0.97, 0.81, 0.57, 1 )
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = ExtResource( 3 )
+shader_param/shirt_mask = Color( 0.34, 0.5, 0.62, 1 )
+shader_param/shirt_color = Color( 0.705882, 0.192157, 0.192157, 1 )
+shader_param/hair_axe_mask = Color( 0.99, 0.93, 0.82, 1 )
+shader_param/hair_axe_color = Color( 0.2, 0.87451, 0.266667, 1 )
+shader_param/pants_mask = Color( 0.76, 0.65, 0.61, 1 )
+shader_param/pants_color = Color( 0.76, 0.65, 0.61, 1 )
+shader_param/boots_eyes_mask = Color( 0.63, 0.87, 0.83, 1 )
+shader_param/boots_eyes_color = Color( 0.286275, 0.443137, 0.611765, 1 )
+shader_param/skin_mask = Color( 0.97, 0.81, 0.57, 1 )
+shader_param/skin_color = Color( 0.97, 0.81, 0.57, 1 )
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 3 )
+shader_param/shirt_mask = Color( 0.34, 0.5, 0.62, 1 )
+shader_param/shirt_color = Color( 0.341176, 0.619608, 0.372549, 1 )
+shader_param/hair_axe_mask = Color( 0.99, 0.93, 0.82, 1 )
+shader_param/hair_axe_color = Color( 0.99, 0.93, 0.82, 1 )
+shader_param/pants_mask = Color( 0.76, 0.65, 0.61, 1 )
+shader_param/pants_color = Color( 0.921569, 0.717647, 0.643137, 1 )
+shader_param/boots_eyes_mask = Color( 0.63, 0.87, 0.83, 1 )
+shader_param/boots_eyes_color = Color( 0.63, 0.87, 0.83, 1 )
+shader_param/skin_mask = Color( 0.97, 0.81, 0.57, 1 )
+shader_param/skin_color = Color( 0.65098, 0.513726, 0.305882, 1 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 192.0
+margin_bottom = 108.0
+rect_scale = Vector2( 10, 10 )
+mouse_filter = 1
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 192, 108 )
+handle_input_locally = false
+hdr = false
+usage = 0
+render_target_update_mode = 3
+physics_object_picking = true
+
+[node name="Background" parent="ViewportContainer/Viewport" instance=ExtResource( 5 )]
+
+[node name="Character3" parent="ViewportContainer/Viewport" instance=ExtResource( 8 )]
+material = SubResource( 14 )
+position = Vector2( 163, 80 )
+id = 3
+
+[node name="Character1" parent="ViewportContainer/Viewport" instance=ExtResource( 8 )]
+material = SubResource( 15 )
+position = Vector2( 75, 59 )
+id = 1
+
+[node name="Character2" parent="ViewportContainer/Viewport" instance=ExtResource( 8 )]
+material = SubResource( 16 )
+position = Vector2( 120, 59 )
+flipped = true
+id = 2
+
+[node name="Character0" parent="ViewportContainer/Viewport" instance=ExtResource( 8 )]
+material = SubResource( 13 )
+position = Vector2( 25, 86 )
+flipped = true
+
+[node name="Countdown" parent="." instance=ExtResource( 12 )]
+position = Vector2( 952, 400 )
+
+[node name="Metronome" parent="." instance=ExtResource( 1 )]
+
+[node name="GameSounds" parent="." instance=ExtResource( 4 )]
+
+[node name="GameLogic" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="SequenceGenerator" parent="." instance=ExtResource( 11 )]
+
+[node name="SequenceRunner" parent="." instance=ExtResource( 10 )]
+
+[node name="Vignette" parent="." instance=ExtResource( 6 )]
+
+[node name="StepHitMissIndicator" parent="." instance=ExtResource( 7 )]
+position = Vector2( 951, 406 )
+
+[node name="ListenLabel" type="Label" parent="."]
+visible = false
+margin_left = 346.0
+margin_top = 161.0
+margin_right = 1589.0
+margin_bottom = 264.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+text = "Listen and get ready to chop the same rhythm!"
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="EndOfWorldLabel" type="Label" parent="."]
+visible = false
+margin_left = 242.0
+margin_top = 183.0
+margin_right = 1707.0
+margin_bottom = 816.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 17 )
+text = "You've failed to bring the evil tree demon allevul
+back to its horrhythmic slumber
+
+The World will be thrown under its shade
+its roots to gnaw at the crust of continents
+
+Send more people! Try again! We beg you!"
+align = 1
+valign = 1
+
+[node name="TweenAudioFadeOut" type="Tween" parent="."]

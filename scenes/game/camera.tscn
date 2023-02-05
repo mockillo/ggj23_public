@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/game/screen_shake.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/screen_shake.gd" type="Script" id=2]
+[ext_resource path="res://scenes/game/camera.gd" type="Script" id=3]
+
+[node name="Camera" type="Camera2D"]
+position = Vector2( 96, 54 )
+current = true
+zoom = Vector2( 0.1, 0.1 )
+script = ExtResource( 3 )
+
+[node name="ScreenShake" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 2 )

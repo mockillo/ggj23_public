@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dim_bass_loop_thump.wav-9d450412e5eab4ce63d44f8ead57d066.sample"
+
+[deps]
+
+source_file="res://audio/dim_bass_loop_thump.wav"
+dest_files=[ "res://.import/dim_bass_loop_thump.wav-9d450412e5eab4ce63d44f8ead57d066.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

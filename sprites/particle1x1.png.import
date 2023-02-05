@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/particle1x1.png-93d219a0f5c549ea45547ec8ef0a2a5f.image"
+
+[deps]
+
+source_file="res://sprites/particle1x1.png"
+dest_files=[ "res://.import/particle1x1.png-93d219a0f5c549ea45547ec8ef0a2a5f.image" ]
+
+[params]
+
